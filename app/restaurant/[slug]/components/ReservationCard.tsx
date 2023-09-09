@@ -1,4 +1,6 @@
-import React from 'react'
+"use client";
+
+import React from "react";
 
 const ReservationCard = () => {
   return (
@@ -33,6 +35,6 @@ const ReservationCard = () => {
       </div>
     </div>
   );
-}
+};
 
-export default ReservationCard
+export default ReservationCard;
