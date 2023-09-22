@@ -2,9 +2,8 @@ import React from "react";
 import Header from "../components/Header";
 import RestaurantNavbar from "../components/RestaurantNavbar";
 import Menu from "../components/Menu";
-import { Item, PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { Item } from "@prisma/client";
+import prisma from "../../../../helpers/PrismaHelper";
 
 const fetchMenuByRestaurant = async (slug: string): Promise<Item[]> => {
   const restaurant = await prisma.restaurant.findUnique({
@@ -16,7 +15,7 @@ const fetchMenuByRestaurant = async (slug: string): Promise<Item[]> => {
     },
   });
   if (!restaurant) {
-    throw new Error();
+    throw new Error("Something went Wrong");
   }
   return restaurant.items;
 };
