@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./components/Header";
 import RestaurantNavbar from "./components/RestaurantNavbar";
 import Title from "./components/Title";
 import Rating from "./components/Rating";
@@ -9,6 +8,7 @@ import Reviews from "./components/Reviews";
 import ReservationCard from "./components/ReservationCard";
 import { Review } from "@prisma/client";
 import prisma from "../../../helpers/PrismaHelper";
+import { notFound } from "next/navigation";
 
 export interface Restaurant {
   id: number;
@@ -34,7 +34,7 @@ const fetchRestaurantBySlug = async (slug: string): Promise<Restaurant> => {
     },
   });
   if (!restaurant) {
-    throw new Error("Something went Wrong");
+    notFound();
   }
   return restaurant;
 };
