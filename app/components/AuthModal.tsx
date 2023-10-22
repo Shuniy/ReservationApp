@@ -66,9 +66,8 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
         return setDisabled(false);
       }
     }
-
     setDisabled(true);
-  }, [inputs]);
+  }, [inputs, isSignin]);
 
   const handleClick = () => {
     if (isSignin) {
@@ -129,7 +128,7 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
                   disabled={disabled}
                   onClick={handleClick}
                 >
-                  {renderContent("Sign In", "Create Account")}
+                  {data?.email + renderContent("Sign In", "Create Account")}
                 </button>
               </div>
             </div>

@@ -64,7 +64,7 @@ export default function AuthContext({
         },
       });
 
-      axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${jwt}`;
 
       setAuthState({
         data: response.data,

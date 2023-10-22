@@ -32,18 +32,18 @@ export default async function handler(
       return res.status(400).json({ errorMessage: errors[0] });
     }
 
-    const userWithEmail = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
         email,
       },
     });
 
-    if (!userWithEmail) {
+    if (!user) {
       return res
         .status(401)
         .json({ errorMessage: "Email or password is Invalid!" });
     }
-    const isMatch = await bcrypt.compare(password, userWithEmail.password);
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res
         .status(401)

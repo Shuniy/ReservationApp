@@ -68,7 +68,7 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
     }
 
     setDisabled(true);
-  }, [inputs]);
+  }, [inputs, isSignin]);
 
   const handleClick = () => {
     if (isSignin) {
